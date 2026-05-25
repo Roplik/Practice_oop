@@ -8,15 +8,6 @@ int gcd(int a, int b)
         return gcd(b, a % b);
     return a;
 }
-// int lcm(int a, int b)
-// {
-//     if(a == 0 || b == 0)
-//         return 0;
-//     return (abs(a)/ gcd(a,b)) * abs(b);
-// }
-
-
-
 
 class Fraction
 {
@@ -79,11 +70,31 @@ Fraction productFractions(const Fraction& a, const Fraction& b)
     return res;
 }
 
+template<>
+struct std::formatter<Fraction> : std::formatter<std::string_view> 
+{
+    auto format(const Fraction& f, std::format_context& ctx) const 
+    {
+        std::string temp = std::format("{}/{}", f.getNumerator(), f.getDenominator());    
+        return std::formatter<std::string_view>::format(temp, ctx);
+    }
+};
+
 int main()
 {   
     Fraction a(2, 5);
     Fraction b(3, 4);
     Fraction res = productFractions(a, b);
-    res.print();
+    
+    // 1. Старый метод работает
+    res.print(); 
+    
+    // 2. Теперь работает напрямую в println!
+    println("Результат умножения: {}", res); 
+    
+    // 3. Работает и через std::format, если нужна строка
+    string s = format("Дробь: {}", a);
+    println("{}", s);
+
     return 0;
 }
