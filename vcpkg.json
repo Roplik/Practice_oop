@@ -1,6 +1,7 @@
 {
   "dependencies": [
+    "cereal",
     "fmt",
-    "sqlite3"
+    "sfml"
   ]
 }

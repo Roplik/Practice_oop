@@ -1,8 +1,6 @@
 import std;
 
 
-// #include<iostream>
-// #include<string.h>
 using namespace std;
 struct Value;
 
@@ -188,9 +186,7 @@ class BinarySerializer : public Serializer
         TYPE_OBJECT = 5
     };
     
-    // Вспомогательные функции для записи
-    
-    // little-endian
+
     void writeUint32(vector<char>& data, uint32_t value) 
     {
         for (int i = 0; i < 4; ++i) 
@@ -199,22 +195,21 @@ class BinarySerializer : public Serializer
         }
     }
     
-    // Запись 8-байтового числа double
     void writeDouble(vector<char>& data, double value) {
         uint64_t bits;
-        memcpy(&bits, &value, 8);  // копируем биты double в 64-битное число
+        memcpy(&bits, &value, 8);  
         for (int i = 0; i < 8; ++i) {
             data.push_back(static_cast<char>((bits >> (i * 8)) & 0xFF));
         }
     }
     
-    // Запись строки: [длина 4 байта] + [символы]
+
     void writeString(vector<char>& data, const string& str) {
         writeUint32(data, static_cast<uint32_t>(str.size()));
         data.insert(data.end(), str.begin(), str.end());
     }
     
-    // Основная функция записи
+
     void write(const Value& val, vector<char>& data) 
     {
         if (holds_alternative<nullptr_t>(val.v)) 

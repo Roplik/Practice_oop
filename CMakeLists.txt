@@ -24,3 +24,6 @@ add_subdirectory("practice_6")
 add_subdirectory("practice_7")
 add_subdirectory("practice_8")
 add_subdirectory("practice_9")
+add_subdirectory("practice_10")
+
+

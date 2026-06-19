@@ -551,58 +551,8 @@ class Queue : public IEnumerable<T> {
         }
 };
 
-int main() {
-    cout << "========== List<T> Test ==========\n";
-    List<int> list = {1, 2, 3, 4, 5};
-    list.Add(6);
-    cout << "List contains 3: " << (list.Contains(3) ? "yes" : "no") << "\n";
-    cout << "List count: " << list.Count() << "\n";
-    cout << "List[2]: " << list[2] << "\n";
-    list.Remove(3);
-    list.Insert(2, 10);
-    for (int i = 0; i < list.Count(); ++i) {
-        cout << list[i] << " ";
-    }
-    cout << "\n";
-    
-    cout << "\n========== HashSet<T> Test ==========\n";
-    HashSet<int> set;
-    set.Add(1);
-    set.Add(2);
-    set.Add(3);
-    set.Add(2); // дубликат не добавится
-    cout << "Set contains 2: " << (set.Contains(2) ? "yes" : "no") << "\n";
-    cout << "Set count: " << set.Count() << "\n";
-    set.Remove(2);
-    cout << "After removal, count: " << set.Count() << "\n";
-    
-    cout << "\n========== Dictionary<TKey, TValue> Test ==========\n";
-    Dictionary<string, int> dict;
-    dict["apple"] = 5;
-    dict["banana"] = 3;
-    dict["orange"] = 8;
-    cout << "apple count: " << dict["apple"] << "\n";
-    cout << "Contains key 'banana': " << (dict.ContainsKey("banana") ? "yes" : "no") << "\n";
-    dict.Remove("banana");
-    cout << "After removal, count: " << dict.Count() << "\n";
-    
-    cout << "\n========== Stack<T> Test (LIFO) ==========\n";
-    Stack<int> stack;
-    stack.Push(1);
-    stack.Push(2);
-    stack.Push(3);
-    cout << "Peek: " << stack.Peek() << "\n";
-    cout << "Pop: " << stack.Pop() << "\n";
-    cout << "Pop: " << stack.Pop() << "\n";
-    
-    cout << "\n========== Queue<T> Test (FIFO) ==========\n";
-    Queue<string> queue;
-    queue.Enqueue("first");
-    queue.Enqueue("second");
-    queue.Enqueue("third");
-    cout << "Dequeue: " << queue.Dequeue() << "\n";
-    cout << "Peek: " << queue.Peek() << "\n";
-    cout << "Dequeue: " << queue.Dequeue() << "\n";
-    
+int main() 
+{
+
     return 0;
 }
